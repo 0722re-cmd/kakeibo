@@ -11,7 +11,7 @@
 <title>家計簿</title>
 <style>
   :root{
-    --bg:#f4f5f7; --card:#fff; --text:#1c1e21; --sub:#7a8088;
+    --bg:#f4f5f7; --card:#fff; --text:#1c1e21; --sub:#5b6168;
     --accent:#2f6df6; --green:#1fa463; --red:#e5484d; --orange:#f59e0b;
     --border:#e6e8eb; --radius:14px;
   }
@@ -19,7 +19,7 @@
   body{
     margin:0; background:var(--bg); color:var(--text);
     font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
-    font-size:15px; padding-bottom:calc(70px + env(safe-area-inset-bottom));
+    font-size:16px; line-height:1.5; padding-bottom:calc(70px + env(safe-area-inset-bottom));
   }
   header{
     position:sticky; top:0; z-index:10; background:var(--card);
@@ -29,40 +29,40 @@
   .hrow{display:flex; align-items:center; justify-content:space-between; max-width:560px; margin:0 auto;}
   .seg{display:flex; background:var(--bg); border-radius:10px; padding:3px; gap:2px;}
   .seg button{
-    border:0; background:transparent; padding:6px 12px; border-radius:8px;
+    border:0; background:transparent; padding:7px 12px; border-radius:8px;
     font-size:13px; color:var(--sub); font-weight:600;
   }
   .seg button.on{background:var(--card); color:var(--text); box-shadow:0 1px 3px rgba(0,0,0,.12);}
-  .monthnav{display:flex; align-items:center; gap:4px; font-weight:700; font-size:16px;}
-  .monthnav button{border:0; background:transparent; font-size:20px; color:var(--accent); padding:4px 10px;}
+  .monthnav{display:flex; align-items:center; gap:4px; font-weight:700; font-size:17px;}
+  .monthnav button{border:0; background:transparent; font-size:22px; color:var(--accent); padding:4px 10px;}
   main{max-width:560px; margin:0 auto; padding:12px;}
-  .card{background:var(--card); border-radius:var(--radius); padding:14px; margin-bottom:12px; box-shadow:0 1px 2px rgba(0,0,0,.04);}
-  .card h3{margin:0 0 10px; font-size:14px; color:var(--sub); font-weight:600;}
+  .card{background:var(--card); border-radius:var(--radius); padding:16px; margin-bottom:14px; box-shadow:0 1px 2px rgba(0,0,0,.04);}
+  .card h3{margin:0 0 12px; font-size:15px; color:var(--text); font-weight:700;}
   .summary{display:flex; gap:8px;}
-  .summary .box{flex:1; text-align:center; padding:10px 4px; border-radius:10px; background:var(--bg);}
-  .summary .lbl{font-size:11px; color:var(--sub);}
-  .summary .val{font-size:16px; font-weight:700; margin-top:2px;}
+  .summary .box{flex:1; text-align:center; padding:12px 4px; border-radius:10px; background:var(--bg);}
+  .summary .lbl{font-size:12px; color:var(--sub); font-weight:600;}
+  .summary .val{font-size:18px; font-weight:700; margin-top:4px;}
   .inc{color:var(--green);} .exp{color:var(--red);}
-  .txrow{display:flex; align-items:center; gap:10px; padding:10px 2px; border-bottom:1px solid var(--border);}
+  .txrow{display:flex; align-items:center; gap:10px; padding:12px 2px; border-bottom:1px solid var(--border);}
   .txrow:last-child{border-bottom:0;}
   .txrow .cat{
-    flex-shrink:0; font-size:11px; font-weight:600; padding:4px 8px; border-radius:8px;
+    flex-shrink:0; font-size:12px; font-weight:700; padding:5px 9px; border-radius:8px;
     background:#eef3ff; color:var(--accent);
   }
   .txrow .cat.salon{background:#fdf0e6; color:#c2620a;}
-  .txrow .memo{flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-  .txrow .memo small{display:block; color:var(--sub); font-size:11px;}
-  .txrow .amt{font-weight:700; flex-shrink:0;}
-  .datehead{font-size:12px; color:var(--sub); font-weight:600; margin:14px 2px 2px;}
-  .bbar{margin-bottom:12px;}
-  .bbar .top{display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;}
-  .bbar .track{height:8px; border-radius:4px; background:var(--bg); overflow:hidden;}
-  .bbar .fill{height:100%; border-radius:4px; background:var(--green);}
+  .txrow .memo{flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:15px;}
+  .txrow .memo small{display:block; color:var(--sub); font-size:12px; margin-top:2px;}
+  .txrow .amt{font-weight:700; font-size:16px; flex-shrink:0;}
+  .datehead{font-size:13px; color:var(--sub); font-weight:700; margin:16px 2px 4px;}
+  .bbar{margin-bottom:14px;}
+  .bbar .top{display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px;}
+  .bbar .track{height:9px; border-radius:5px; background:var(--bg); overflow:hidden;}
+  .bbar .fill{height:100%; border-radius:5px; background:var(--green);}
   .bbar.warn .fill{background:var(--orange);}
   .bbar.over .fill{background:var(--red);}
-  label.fl{display:block; font-size:12px; color:var(--sub); font-weight:600; margin:12px 0 4px;}
+  label.fl{display:block; font-size:13px; color:var(--sub); font-weight:600; margin:14px 0 5px;}
   input,select,button.btn{
-    width:100%; padding:12px; border:1px solid var(--border); border-radius:10px;
+    width:100%; padding:13px; border:1px solid var(--border); border-radius:10px;
     font-size:16px; background:var(--card); color:var(--text); appearance:none;
   }
   input:focus,select:focus{outline:2px solid var(--accent); border-color:transparent;}
@@ -81,33 +81,34 @@
   }
   .tabbar button{
     flex:1; border:0; background:transparent; padding:8px 0 6px;
-    font-size:10px; color:var(--sub); display:flex; flex-direction:column; align-items:center; gap:2px;
+    font-size:11px; font-weight:600; color:var(--sub); display:flex; flex-direction:column; align-items:center; gap:3px;
   }
-  .tabbar button .ic{font-size:20px; line-height:1;}
+  .tabbar button .ic{font-size:21px; line-height:1;}
   .tabbar button.on{color:var(--accent); font-weight:700;}
-  .legend{display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:10px; font-size:12px;}
-  .legend span i{display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:4px;}
+  .legend{display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:12px; font-size:13px;}
+  .legend span i{display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px;}
   .trend{display:flex; align-items:flex-end; gap:8px; height:140px; margin-top:8px;}
   .trend .m{flex:1; display:flex; flex-direction:column; align-items:center; height:100%;}
   .trend .bars{flex:1; display:flex; align-items:flex-end; gap:3px; width:100%; justify-content:center;}
   .trend .bar{width:38%; max-width:22px; border-radius:3px 3px 0 0; min-height:1px;}
-  .trend .ml{font-size:10px; color:var(--sub); margin-top:4px;}
-  .empty{text-align:center; color:var(--sub); padding:24px 0; font-size:13px;}
+  .trend .ml{font-size:11px; color:var(--sub); margin-top:5px; font-weight:600;}
+  .empty{text-align:center; color:var(--sub); padding:24px 0; font-size:14px;}
   #toast{
     position:fixed; bottom:90px; left:50%; transform:translateX(-50%);
-    background:#333; color:#fff; padding:10px 18px; border-radius:20px; font-size:13px;
+    background:#333; color:#fff; padding:10px 18px; border-radius:20px; font-size:14px;
     opacity:0; transition:opacity .25s; pointer-events:none; z-index:50; white-space:nowrap;
   }
-  table.prev{width:100%; border-collapse:collapse; font-size:12px;}
-  table.prev td,table.prev th{padding:6px 4px; border-bottom:1px solid var(--border); text-align:left;}
-  table.prev select{padding:6px; font-size:13px;}
-  table.prev .dup{opacity:.4;}
-  .note{font-size:12px; color:var(--sub); line-height:1.6;}
-  .rankrow{display:flex; align-items:center; gap:8px; padding:7px 0; font-size:13px;}
+  table.prev{width:100%; border-collapse:collapse; font-size:13px;}
+  table.prev td,table.prev th{padding:8px 5px; border-bottom:1px solid var(--border); text-align:left;}
+  table.prev th{color:var(--sub); font-weight:700;}
+  table.prev select{padding:7px; font-size:13px;}
+  table.prev .dup{opacity:.45;}
+  .note{font-size:13px; color:var(--sub); line-height:1.7;}
+  .rankrow{display:flex; align-items:center; gap:8px; padding:8px 0; font-size:14px;}
   .rankrow i{width:10px; height:10px; border-radius:3px; flex-shrink:0;}
   .rankrow .n{flex:1;}
-  .reclist .txrow .amt{font-size:14px;}
-  .del{border:0; background:transparent; color:var(--red); font-size:13px; padding:4px 8px; flex-shrink:0;}
+  .reclist .txrow .amt{font-size:15px;}
+  .del{border:0; background:transparent; color:var(--red); font-size:14px; padding:5px 9px; flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -452,7 +453,7 @@ function renderSetting(){
   const b = state.budgets[budgetAcc]||{};
   const budgetInputs = CATS.expense[budgetAcc].map(c=>`
     <div class="row2" style="align-items:center;margin-bottom:8px">
-      <span style="flex:0 0 110px;font-size:13px">${esc(c)}</span>
+      <span style="flex:0 0 110px;font-size:14px">${esc(c)}</span>
       <input type="text" inputmode="numeric" data-bcat="${esc(c)}" placeholder="未設定" value="${b[c]||''}">
     </div>`).join('');
 
